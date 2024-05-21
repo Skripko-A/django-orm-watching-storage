@@ -1,18 +1,17 @@
-from datacenter.models import Passcard
-from datacenter.models import Visit
-from django.shortcuts import render
+from datacenter.models import Passcard, Visit, get_duration, get_storage_visits_personal, is_visit_long, format_duration
+from django.shortcuts import render, get_object_or_404
 
 
 def passcard_info_view(request, passcode):
-    passcard = Passcard.objects.all()[0]
-    # Программируем здесь
-
+    passcard = get_object_or_404(Passcard, passcode=passcode)
+    personal_visits = get_storage_visits_personal(passcode)
     this_passcard_visits = [
         {
-            'entered_at': '11-04-2018',
-            'duration': '25:03',
-            'is_strange': False
-        },
+            'entered_at': visit.entered_at,
+            'duration': format_duration(get_duration(visit)),
+            'is_strange': is_visit_long(visit, 60)
+        }
+        for visit in personal_visits
     ]
     context = {
         'passcard': passcard,
