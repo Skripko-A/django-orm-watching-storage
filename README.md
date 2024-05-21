@@ -23,7 +23,9 @@ python3 main.py
 
 ### Демонстрация работы сайта
 Страница активных карт доступа:
-![](https://github.com/Skripko-A/django-orm-watching-storage/blob/master/active_passcards_page.png)
+![](https://github.com/Skripko-A/django-orm-watching-storage/blob/master/active_passcards_page.png)  
+Страница списка людей в хранилище:
+![](https://github.com/Skripko-A/django-orm-watching-storage/blob/master/storage_info_view.png)
 
 
 ### Цель проекта
