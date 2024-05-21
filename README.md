@@ -25,8 +25,9 @@ python3 main.py
 Страница активных карт доступа:
 ![](https://github.com/Skripko-A/django-orm-watching-storage/blob/master/active_passcards_page.png)  
 Страница списка людей в хранилище:
-![](https://github.com/Skripko-A/django-orm-watching-storage/blob/master/storage_info_view.png)
-
+![](https://github.com/Skripko-A/django-orm-watching-storage/blob/master/storage_info_view.png)  
+Станица списка посещений хранилища по конкретному ключу:  
+![](https://github.com/Skripko-A/django-orm-watching-storage/blob/master/passcard_info_view.png)
 
 ### Цель проекта
 Код написан в образовательных целях на онлайн-курсе для веб-разработчиков [dvmn.org](https://dvmn.org/).
