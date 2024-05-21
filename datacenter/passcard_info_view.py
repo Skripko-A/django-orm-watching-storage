@@ -1,4 +1,4 @@
-from datacenter.models import Passcard, Visit, get_duration, get_storage_visits_personal, is_visit_long, format_duration
+from datacenter.models import Passcard, get_duration, get_storage_visits_personal, is_visit_long, format_duration
 from django.shortcuts import render, get_object_or_404
 
 
