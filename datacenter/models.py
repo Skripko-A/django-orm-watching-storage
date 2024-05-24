@@ -1,5 +1,8 @@
+from datetime import datetime
+
 from django.db import models
-from django.utils.timezone import localtime, activate
+from django.utils.timezone import localtime, activate, make_aware, now
+
 import project.settings
 
 SECONDS_IN_ONE_MINUTE = 60
@@ -36,13 +39,11 @@ class Visit(models.Model):
 
 
 def get_duration(visit):
-    activate(project.settings.TIME_ZONE)
-    current_time = localtime().replace(microsecond=0)
+    current_time = now()
     entered_time = visit.entered_at
     if visit.leaved_at:
         current_time = visit.leaved_at
     visit_duration = current_time - entered_time
-    print(current_time, entered_time)
     return visit_duration.total_seconds()
 
 
