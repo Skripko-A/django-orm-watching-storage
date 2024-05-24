@@ -1,5 +1,9 @@
 from django.db import models
-from django.utils.timezone import localtime
+from django.utils.timezone import localtime, activate
+import project.settings
+
+SECONDS_IN_ONE_MINUTE = 60
+MINUTES_IN_ONE_HOUR = 60
 
 
 class Passcard(models.Model):
@@ -32,27 +36,23 @@ class Visit(models.Model):
 
 
 def get_duration(visit):
+    activate(project.settings.TIME_ZONE)
     current_time = localtime().replace(microsecond=0)
     entered_time = visit.entered_at
     if visit.leaved_at:
         current_time = visit.leaved_at
     visit_duration = current_time - entered_time
-    return visit_duration.seconds
-
-
-def get_storage_visits_personal(passcode):
-    person = Passcard.objects.get(passcode=passcode)
-    person_storage_visits = Visit.objects.filter(passcard=person)
-    return person_storage_visits
+    print(current_time, entered_time)
+    return visit_duration.total_seconds()
 
 
 def is_visit_long(visit, suspicious_interval):
-    if get_duration(visit) > suspicious_interval * 60:
+    if get_duration(visit) > suspicious_interval * SECONDS_IN_ONE_MINUTE:
         return 'Да'
     return 'Нет'
 
 
 def format_duration(duration):
-    hours = duration // 3600
-    minutes = duration // 60 - hours * 60
+    hours = duration // (MINUTES_IN_ONE_HOUR * SECONDS_IN_ONE_MINUTE)
+    minutes = duration // MINUTES_IN_ONE_HOUR - hours * MINUTES_IN_ONE_HOUR
     return f'{hours}ч, {minutes}м'
