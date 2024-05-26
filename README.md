@@ -9,10 +9,13 @@ Python3 должен быть установлен.
 
 ```commandline
 python3 -m venv env
+```
+```commandline
 source env/bin/activate
+```
+```commandline
 pip3 install -r requirements.txt
 ```
-
 
 ### Запуск
 ```commandline
