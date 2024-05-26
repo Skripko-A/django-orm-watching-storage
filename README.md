@@ -16,7 +16,7 @@ pip3 install -r requirements.txt
 
 ### Запуск
 ```commandline
-python3 manage.py localhost:80000
+python3 manage.py runserver localhost:80000
 ```
 Перейдите по ссылке http://localhost:8000
 
