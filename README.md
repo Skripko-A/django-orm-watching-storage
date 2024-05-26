@@ -16,18 +16,12 @@ pip3 install -r requirements.txt
 
 ### Запуск
 ```commandline
-python3 main.py
+python3 manage.py localhost:80000
 ```
-Перейдите по ссылке http://0.0.0.0:8000  
+Перейдите по ссылке http://localhost:8000
 
 
 ### Демонстрация работы сайта
-Страница активных карт доступа:
-![](https://github.com/Skripko-A/django-orm-watching-storage/blob/master/active_passcards_page.png)  
-Страница списка людей в хранилище:
-![](https://github.com/Skripko-A/django-orm-watching-storage/blob/master/storage_info_view.png)  
-Станица списка посещений хранилища по конкретному ключу:  
-![](https://github.com/Skripko-A/django-orm-watching-storage/blob/master/passcard_info_view.png)
-
+![](https://github.com/Skripko-A/django-orm-watching-storage/blob/master/django-orm-watching-storage-demo.gif)
 ### Цель проекта
 Код написан в образовательных целях на онлайн-курсе для веб-разработчиков [dvmn.org](https://dvmn.org/).
