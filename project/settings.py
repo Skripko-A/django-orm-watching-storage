@@ -1,34 +1,30 @@
 import os
+
+import dj_database_url
 from environs import Env
 
 
-dotenv_path = os.path.join(os.path.dirname(__file__), '.env.database_params')
-database_params = Env()
-database_params.read_env(dotenv_path)
+dotenv_path = os.path.join(os.path.dirname(__file__), '.env.private_settings')
+private_settings = Env()
+private_settings.read_env(dotenv_path)
 
-DATABASES = {
-    'default': {
-        'ENGINE': database_params.str('ENGINE'),
-        'HOST': database_params.str('HOST'),
-        'PORT': database_params.str('PORT'),
-        'NAME': database_params.str('NAME'),
-        'USER': database_params.str('DEFAULT_USER'),
-        'PASSWORD': database_params.str('PASSWORD')
-    }
-}
+
+DB_URL = private_settings('DB_URL')
+
+DATABASES = {'default': dj_database_url.config(default=DB_URL)}
+
+SECRET_KEY = private_settings.str('SECRET_KEY')
+
+ALLOWED_HOSTS = private_settings('ALLOWED_HOSTS')
+
+DEBUG = private_settings.bool('DEBUG')
 
 INSTALLED_APPS = ['datacenter']
 
-SECRET_KEY = database_params.str('SECRET_KEY')
-
-DEBUG = database_params.bool('DEBUG')
-
 ROOT_URLCONF = 'project.urls'
 
-ALLOWED_HOSTS = ['*']
-
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
