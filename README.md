@@ -16,7 +16,19 @@ source env/bin/activate
 ```commandline
 pip3 install -r requirements.txt
 ```
+Создайте файл для хранения переменных окружения:
+```commandline
+touch .env.private_settings
+```
+Структура вашего файла .env.private_settings:
+```
+ALLOWED_HOSTS = 'разрешенные хосты'
+SECRET_KEY = 'ваш secret_key'
+DEBUG = True или False
 
+DB_URL = 'postgres://db_user:password@db_host:port/db_name'
+```
+В кавычкх ('') необходимо указать соответствующие настройки БД.
 ### Запуск
 ```commandline
 python3 manage.py runserver localhost:8000
